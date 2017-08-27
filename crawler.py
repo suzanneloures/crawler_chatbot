@@ -4,13 +4,16 @@ from sqlalchemy.orm import sessionmaker
 
 def url_navegavel(url):
     global url_pagina_inicial
-    if(url.startswith("/")):
-        return url_pagina_inicial + url
+
+    
+    if(not url.startswith("http")):
+        return url_pagina_inicial+ "/" + url
 
     return url
 
 def valida_url(url):
     global vetor_links
+    
     if(url.startswith('http') ):
         return False
     
@@ -20,6 +23,9 @@ def valida_url(url):
     if(url.startswith("#")):
         return False
     if(url.startswith('javascript')):
+        return False
+    
+    if(url.startswith('mailto:')):
         return False
     
     if(url == '/'):
@@ -32,30 +38,34 @@ def captura (pagina):
     global nivel
     global vetor_links
 
-    vetor_links.append(pagina.url)
+    
     browser = RoboBrowser()
-    browser.open(url_navegavel(pagina.url))
+    try:
+        browser.open(url_navegavel(pagina.url))
+        
+        
+        pagina.titulo = browser.select('title')
+        pagina.h1 = browser.select('h1')
+        pagina.h2 = browser.select('h2')
+        pagina.h3 = browser.select('h3')
+        pagina.h4 = browser.select('h4')
+        pagina.h5 = browser.select('h5')
+        pagina.h6 = browser.select('h6')
+        pagina.negrito = browser.find_all(['strong', 'b'])
+        links = browser.select('a')
 
-    
-    
-    pagina.titulo = browser.select('title')
-    pagina.h1 = browser.select('h1')
-    pagina.h2 = browser.select('h2')
-    pagina.h3 = browser.select('h3')
-    pagina.h4 = browser.select('h4')
-    pagina.h5 = browser.select('h5')
-    pagina.h6 = browser.select('h6')
-    pagina.negrito = browser.find_all(['strong', 'b'])
-    links = browser.select('a')
+        if(len(vetor_paginas) <= nivel+1):
+            vetor_paginas.insert(nivel+1, [])
 
-    if(len(vetor_paginas) <= nivel+1):
-        vetor_paginas.insert(nivel+1, [])
-
-    for link in links:
-        if(link.has_attr('href') and valida_url(link['href'])):
-            p = Pagina(link['href'])
-            vetor_paginas[nivel + 1].append(p)
-            vetor_links.append(link['href'])
+        for link in links:
+            if(link.has_attr('href') and valida_url(link['href'])):
+                p = Pagina(link['href'])
+                p.pai = pagina
+                pagina.filhos.append(p)
+                vetor_paginas[nivel + 1].append(p)
+                vetor_links.append(link['href'])
+    except:
+        print("erro")
 
 #engine = create_engine('sqlite:///banco.db', echo=True)
 #vetor_links = []
@@ -66,7 +76,8 @@ vetor_links = []
 vetor_paginas.insert(0, [])
 
 # Browse to Rap Genius
-url_pagina_inicial = 'http://ufba.br'
+url_pagina_inicial = 'http://www.ppgdanca.dan.ufba.br/'
+vetor_links.append(url_pagina_inicial)
 nivel = 0
 posicao_largura = 0
 
@@ -85,14 +96,15 @@ vetor_paginas[0].append(p_inicial)
 
 # funcao captura todos os titulos e links da pagina e salva no vetor
 
-while(vetor_paginas[nivel] is not None):
+while(len(vetor_paginas[nivel])>0):
     if(len(vetor_paginas[nivel]) == posicao_largura ):
         nivel += 1
         posicao_largura = 0
     else:
         captura(vetor_paginas[nivel][posicao_largura])
         posicao_largura += 1
-    
+
+print("acabou")
 
 
 

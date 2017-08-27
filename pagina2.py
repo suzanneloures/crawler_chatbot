@@ -1,5 +1,5 @@
 class Pagina(object):
-    filhos = []
+    
 
     def __init__ (self, url, titulo = '', h1='', h2='', h3='', h4='', h5='', h6='', negrito=''):
         self.titulo = titulo
@@ -12,5 +12,7 @@ class Pagina(object):
         self.h5 = h5
         self.h6 = h6
         self.negrito = negrito
+
+        self.filhos = []
 
     

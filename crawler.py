@@ -1,6 +1,7 @@
 from robobrowser import RoboBrowser
 from pagina2 import Pagina
 from sqlalchemy.orm import sessionmaker
+import sys
 
 def url_navegavel(url):
     global url_pagina_inicial
@@ -13,9 +14,11 @@ def url_navegavel(url):
 
 def valida_url(url):
     global vetor_links
+
     
     if(url.startswith('http') ):
-        return False
+        if(not url.startswith(url_pagina_inicial)):
+            return False
     
     if(url in vetor_links ):
         return False
@@ -44,14 +47,14 @@ def captura (pagina):
         browser.open(url_navegavel(pagina.url))
         
         
-        pagina.titulo = browser.select('title')
-        pagina.h1 = browser.select('h1')
-        pagina.h2 = browser.select('h2')
-        pagina.h3 = browser.select('h3')
-        pagina.h4 = browser.select('h4')
-        pagina.h5 = browser.select('h5')
-        pagina.h6 = browser.select('h6')
-        pagina.negrito = browser.find_all(['strong', 'b'])
+        pagina.titulo = "".join([t.text for t in browser.select('title')])
+        pagina.h1 = " ".join([t.text for t in browser.select('h1')])
+        pagina.h2 = " ".join([t.text for t in browser.select('h2')])
+        pagina.h3 = " ".join([t.text for t in browser.select('h3')])
+        pagina.h4 = " ".join([t.text for t in browser.select('h4')])
+        pagina.h5 = " ".join([t.text for t in browser.select('h5')])
+        pagina.h6 = " ".join([t.text for t in browser.select('h6')])
+        pagina.negrito = " ".join([t.text for t in browser.find_all(['strong', 'b'])])
         links = browser.select('a')
 
         if(len(vetor_paginas) <= nivel+1):
@@ -66,6 +69,8 @@ def captura (pagina):
                 vetor_links.append(link['href'])
     except:
         print("erro")
+        e = sys.exc_info()[0]
+        print(e)
 
 #engine = create_engine('sqlite:///banco.db', echo=True)
 #vetor_links = []
@@ -76,7 +81,7 @@ vetor_links = []
 vetor_paginas.insert(0, [])
 
 # Browse to Rap Genius
-url_pagina_inicial = 'http://www.ppgdanca.dan.ufba.br/'
+url_pagina_inicial = 'http://www.avansys.com.br'
 vetor_links.append(url_pagina_inicial)
 nivel = 0
 posicao_largura = 0
@@ -104,7 +109,21 @@ while(len(vetor_paginas[nivel])>0):
         captura(vetor_paginas[nivel][posicao_largura])
         posicao_largura += 1
 
-print("acabou")
+
+
+
+while(True):
+    comando = input("Deseja fazer uma busca? S/N")
+    if(comando.upper() == "N"):
+        quit()
+    busca = input("O que buscar?")
+    for profundidade in range(0,len(vetor_paginas)-1):
+        if(len(vetor_paginas[profundidade]) > 0):
+            for largura in range(0,len(vetor_paginas[profundidade])-1):
+                if busca.upper() in vetor_paginas[profundidade][largura].h1.upper() + vetor_paginas[profundidade][largura].titulo.upper() \
+                        + vetor_paginas[profundidade][largura].h2.upper() + vetor_paginas[profundidade][largura].h3.upper() + \
+                        vetor_paginas[profundidade][largura].h4.upper():
+                    print(vetor_paginas[profundidade][largura].url)
 
 
 

@@ -1,6 +1,6 @@
 import re
 from robobrowser import RoboBrowser
-from .pagina import Pagina
+from .pagina2 import Pagina
 from sqlalchemy.orm import sessionmaker
 
 engine = create_engine('sqlite:///banco.db', echo=True)

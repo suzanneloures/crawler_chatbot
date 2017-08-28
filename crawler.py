@@ -125,8 +125,7 @@ while(True):
                       'uma', 'uns', 'umas','onde','após', 'até', 'com', 'contra', 'em','entre','perante', 'por', 'sem',
                       'sobre', 'trás']
 
-]
-    removepontuacao = ['?','.',',','!',':','"',';','-']
+    #removepontuacao = ['?','.',',','!',':','"',';','-']
 
     querybusca = busca.split()
     resultadobusca = [palavra for palavra in querybusca if palavra.lower() not in removepalavras]

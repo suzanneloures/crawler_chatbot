@@ -127,7 +127,7 @@ while(True):
 
     querybusca = busca.split()
     resultadobusca = [palavra for palavra in querybusca if palavra.lower() not in removepalavras]
-    rbusca = ' '.join(resultadobusca)
+    #rbusca = ' '.join(resultadobusca)
 
     for profundidade in range(0,len(vetor_paginas)-1):
         if(len(vetor_paginas[profundidade]) > 0):

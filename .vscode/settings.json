@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "C:/Users/ramon/AppData/Local/Continuum/Miniconda3/envs/ia/python"
+    "python.pythonPath": "C:/Users/ramon/AppData/Local/Continuum/Miniconda3/envs/ia/python",
+    "python.linting.pylintEnabled": false
 }

@@ -14,7 +14,15 @@ def perguntar():
     retorno = buscar(pergunta)
     if len(retorno) == 0:
         return "<br/> Não encontrei nada relacionado a sua questão. Tente palavras chaves"
-    return '<br/> Verifiquei que as seguintes páginas correspondem à sua pergunta: '+'<br/>'.join(retorno)
+    return '<br/> Verifiquei que as seguintes páginas correspondem à sua pergunta: '+'<br/>'+retorno[0].url
 
 
+@app.route('/acerto', methods = ['POST'])
+def acerto():
+    global resultados
+    id = request.form['id']
+    resultado = resultados[id]
+    resultado.acerto = True
+    resultado[id] = resultado
+    return 1
 

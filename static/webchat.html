@@ -123,8 +123,9 @@ input:focus{
 
 <script>
 
+
     var me = {};
-me.avatar = "https://lh6.googleusercontent.com/-lr2nyjhhjXw/AAAAAAAAAAI/AAAAAAAARmE/MdtfUmC0M4s/photo.jpg?sz=48";
+me.avatar = "https://pictr.com/images/2017/08/29/0b85866a5429865990bffaadefc0031b.png";
 
 var you = {};
 you.avatar = "https://marketplace.canva.com/MAB6v043Ud8/1/thumbnail/canva-robot-electric-avatar-icon-MAB6v043Ud8.png";
@@ -178,21 +179,31 @@ function insertChat(who, text, time = 0){
 function resetChat(){
     $("ul").empty();
 }
+estado_feedback = false;
 
 $(".mytext").on("keyup", function(e){
     if (e.which == 13){
         var text = $(this).val();
         if (text !== ""){
             insertChat("me", text);
-            $('.frame').animate({scrollTop: $('.frame')[0].scrollHeight}, 500);
-            $.post('perguntar', { "pergunta": text},
+            if(estado_feedback){
+                if($(this).val().toUpperCase() == 'SIM'){
+                    
+                }else{
+
+                }
+            }else{
+                $.post('perguntar', { "pergunta": text},
                 function(returnedData){
                      insertChat("you",  returnedData, 1000);
                      
-            }).fail(function(){
-                  console.log("error");
-            });
+                }).fail(function(){
+                    console.log("error");
+                });
 
+            }
+            $('.frame').animate({scrollTop: $('.frame')[0].scrollHeight}, 500);
+            
             $(this).val('');
             
         }

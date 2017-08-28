@@ -2,6 +2,7 @@ import urllib.parse
 from robobrowser import RoboBrowser
 from pagina2 import Pagina
 from sqlalchemy.orm import sessionmaker
+from resultado import Resultado
 import sys
 
 def sinonimos(palavra):
@@ -82,8 +83,7 @@ def captura (pagina):
         e = sys.exc_info()[0]
         print(e)
 
-#engine = create_engine('sqlite:///banco.db', echo=True)
-#vetor_links = []
+
 vetor_titulos = []
 vetor_paginas = []
 vetor_links = []
@@ -95,7 +95,8 @@ url_pagina_inicial = 'http://www.opensystem.srv.br'
 vetor_links.append(url_pagina_inicial)
 nivel = 0
 posicao_largura = 0
-
+resultados = []
+id_resultado = 0
 p_inicial = Pagina(url_pagina_inicial)
 
 vetor_paginas[0].append(p_inicial)
@@ -119,6 +120,20 @@ while(len(vetor_paginas[nivel])>0):
         captura(vetor_paginas[nivel][posicao_largura])
         posicao_largura += 1
 
+def ordernar_resultados(lista):
+    global resultados
+    if len(resultados) > 0:
+        prob_acerto = float(len([r for r in resultados if r.acerto==True])) / float(len(resultados))
+    else:
+        prob_acerto = 0
+    for l in lista:
+        if(prob_acerto==0):
+            l.probabilidade = 0
+        else:
+            prob_condicao = float(len([r for r in resultados if r.h1 == l.h1 and r.h2 == l.h2 and r.titulo == l.titulo]))/float(len(resultados))
+            prob_acerto_e_condicao = float(len([r for r in resultados if r.h1 == l.h1 and r.h2 == l.h2 and r.titulo == l.titulo and r.acerto==True]))/float(len(resultados))
+            l.probabilidade = float(prob_acerto_e_condicao) / float(prob_condicao)
+    lista.sort(key=lambda x: x.probabilidade)
 
 def buscar(busca):
     resposta = []
@@ -127,6 +142,7 @@ def buscar(busca):
     global vetor_paginas
     global largura
     global vetor_links
+    global id_resultado
     removepalavras = ['e', 'é', 'nem', 'não', 'nao', 'entanto', 'ainda', 'assim', 'mas', 'tambem', 'senão', 'senao',
                       'que', 'como', 'pois', 'porque',
                       'por', 'isso', 'já', 'visto', 'do', 'de', 'ou', 'quer', 'logo', 'porquanto', 'depois', 'mais',
@@ -135,7 +151,7 @@ def buscar(busca):
                       'a', 'um'
                            'uma', 'uns', 'umas', 'onde', 'após', 'até', 'com', 'contra', 'em', 'entre', 'perante',
                       'por', 'sem',
-                      'sobre', 'trás']
+                      'sobre', 'trás','vocês','têm','será','como']
 
     removepontuacao = ['?','.',',','!',':','"',';','-']
     for p in removepontuacao:
@@ -149,21 +165,40 @@ def buscar(busca):
         if (len(vetor_paginas[profundidade]) > 0):
             for largura in range(0, len(vetor_paginas[profundidade]) - 1):
                 for palavra in resultadobusca:
+                    resultado = Resultado(id_resultado + 1)
+                    palavra = palavra.upper()
+                    if palavra.upper() in vetor_paginas[profundidade][largura].h1.upper():
+                        resultado.h1 = True
+                    if palavra.upper() in vetor_paginas[profundidade][largura].h2.upper():
+                        resultado.h2 = True
+                    if palavra.upper() in vetor_paginas[profundidade][largura].titulo.upper():
+                        resultado.titulo = True
+                    if(resultado.titulo or resultado.h1 or resultado.h2):
+                        resultado.url = url_navegavel(vetor_paginas[profundidade][largura].url)
+                        resultados.append(resultado)
+                        id_resultado += 1
+                        resposta.append(resultado)
+                    '''
                     if palavra.upper() in vetor_paginas[profundidade][largura].h1.upper() + vetor_paginas[profundidade][
                         largura].titulo.upper() \
                             + vetor_paginas[profundidade][largura].h2.upper() + vetor_paginas[profundidade][
                         largura].h3.upper() + \
                             vetor_paginas[profundidade][largura].h4.upper():
                         resposta.append(url_navegavel(vetor_paginas[profundidade][largura].url))
+                    '''
     return resposta
-'''
-while(True):
-    comando = input("Deseja fazer uma busca? S/N")
-    if(comando.upper() == "N"):
-        quit()
-    texto = input("Em que posso ajudar?")
-    print(buscar(texto))
-'''
+
+if __name__ == "__main__":
+    while(True):
+        comando = input("Deseja fazer uma busca? S/N")
+        if(comando.upper() == "N"):
+            quit()
+        texto = input("Em que posso ajudar?")
+        resultado_busca = buscar(texto)
+        ordernar_resultados(resultado_busca)
+        for r in resultado_busca:
+            print(r.url + "/" )
+
 
 
 

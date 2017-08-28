@@ -116,11 +116,23 @@ while(True):
     comando = input("Deseja fazer uma busca? S/N")
     if(comando.upper() == "N"):
         quit()
-    busca = input("O que buscar?")
+    busca = input("Em que posso ajudar?")
+
+    removepalavras = ['e','é','nem', 'não','nao','entanto', 'ainda', 'assim', 'mas', 'tambem','senão','senao','que','como','pois','porque',
+                        'por','isso', 'já', 'visto', 'do', 'de', 'ou', 'quer', 'logo', 'porquanto', 'depois', 'mais',
+                        'maior', 'melhor','menos', 'menor', 'tanto','se' ,'bem', 'contanto', 'desde', 'dado','ser',
+                      'exceto','quando', 'apenas', 'antes', 'logo','sempre', 'tão', 'tal','para', 'os','as','o','a', 'um'
+                      'uma', 'uns', 'umas']
+    #removepontuacao = ['?','.',',','!',':','"',';','-']
+
+    querybusca = busca.split()
+    resultadobusca = [palavra for palavra in querybusca if palavra.lower() not in removepalavras]
+    rbusca = ' '.join(resultadobusca)
+
     for profundidade in range(0,len(vetor_paginas)-1):
         if(len(vetor_paginas[profundidade]) > 0):
             for largura in range(0,len(vetor_paginas[profundidade])-1):
-                if busca.upper() in vetor_paginas[profundidade][largura].h1.upper() + vetor_paginas[profundidade][largura].titulo.upper() \
+                if rbusca.upper() in vetor_paginas[profundidade][largura].h1.upper() + vetor_paginas[profundidade][largura].titulo.upper() \
                         + vetor_paginas[profundidade][largura].h2.upper() + vetor_paginas[profundidade][largura].h3.upper() + \
                         vetor_paginas[profundidade][largura].h4.upper():
                     print(vetor_paginas[profundidade][largura].url)

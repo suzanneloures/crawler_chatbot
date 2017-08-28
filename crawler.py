@@ -122,8 +122,11 @@ while(True):
                         'por','isso', 'já', 'visto', 'do', 'de', 'ou', 'quer', 'logo', 'porquanto', 'depois', 'mais',
                         'maior', 'melhor','menos', 'menor', 'tanto','se' ,'bem', 'contanto', 'desde', 'dado','ser',
                       'exceto','quando', 'apenas', 'antes', 'logo','sempre', 'tão', 'tal','para', 'os','as','o','a', 'um'
-                      'uma', 'uns', 'umas']
-    #removepontuacao = ['?','.',',','!',':','"',';','-']
+                      'uma', 'uns', 'umas','onde','após', 'até', 'com', 'contra', 'em','entre','perante', 'por', 'sem',
+                      'sobre', 'trás']
+
+]
+    removepontuacao = ['?','.',',','!',':','"',';','-']
 
     querybusca = busca.split()
     resultadobusca = [palavra for palavra in querybusca if palavra.lower() not in removepalavras]

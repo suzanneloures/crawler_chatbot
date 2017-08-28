@@ -134,10 +134,12 @@ while(True):
     for profundidade in range(0,len(vetor_paginas)-1):
         if(len(vetor_paginas[profundidade]) > 0):
             for largura in range(0,len(vetor_paginas[profundidade])-1):
-                if rbusca.upper() in vetor_paginas[profundidade][largura].h1.upper() + vetor_paginas[profundidade][largura].titulo.upper() \
-                        + vetor_paginas[profundidade][largura].h2.upper() + vetor_paginas[profundidade][largura].h3.upper() + \
-                        vetor_paginas[profundidade][largura].h4.upper():
-                    print(vetor_paginas[profundidade][largura].url)
+                for palavra in resultadobusca:
+                    if palavra.upper() in vetor_paginas[profundidade][largura].h1.upper() + vetor_paginas[profundidade][largura].titulo.upper() \
+                            + vetor_paginas[profundidade][largura].h2.upper() + vetor_paginas[profundidade][largura].h3.upper() + \
+                            vetor_paginas[profundidade][largura].h4.upper():
+                        print(vetor_paginas[profundidade][largura].url)
+                        break
 
 
 

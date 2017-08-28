@@ -1,4 +1,5 @@
-from flask import Flask, current_app, request
+from flask import Flask, current_app, request, jsonify, Response
+import json
 from pagina2 import Pagina
 from crawler import *
 app = Flask(__name__)
@@ -12,9 +13,10 @@ def hello_world():
 def perguntar():
     pergunta = request.form['pergunta']
     retorno = buscar(pergunta)
-    if len(retorno) == 0:
+    '''if len(retorno) == 0:
         return "<br/> Não encontrei nada relacionado a sua questão. Tente palavras chaves"
-    return '<br/> Verifiquei que as seguintes páginas correspondem à sua pergunta: '+'<br/>'+retorno[0].url
+    return '<br/> Verifiquei que as seguintes páginas correspondem à sua pergunta: '+'<br/>'+retorno[0].url'''
+    return Response(json.dumps(retorno),  mimetype='application/json')
 
 
 @app.route('/acerto', methods = ['POST'])

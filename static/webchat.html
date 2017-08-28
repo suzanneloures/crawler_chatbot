@@ -180,6 +180,7 @@ function resetChat(){
     $("ul").empty();
 }
 estado_feedback = false;
+respostas = [];
 
 $(".mytext").on("keyup", function(e){
     if (e.which == 13){
@@ -188,13 +189,15 @@ $(".mytext").on("keyup", function(e){
             insertChat("me", text);
             if(estado_feedback){
                 if($(this).val().toUpperCase() == 'SIM'){
-                    
+                    insertChat("you", "Legal! Posso ajudar em algo mais?");
+                    estado_feedback = false
                 }else{
 
                 }
             }else{
                 $.post('perguntar', { "pergunta": text},
                 function(returnedData){
+                    respostas = $.parseJSON(returnedData)
                      insertChat("you",  returnedData, 1000);
                      
                 }).fail(function(){

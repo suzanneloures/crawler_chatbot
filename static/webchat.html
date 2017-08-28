@@ -52,7 +52,7 @@
 .frame{
     background:#e0e0de;
     height:450px;
-    overflow:hidden;
+    overflow:scroll;
     padding:0;
 }
 .frame > div:last-of-type{
@@ -62,7 +62,7 @@ ul {
     width:100%;
     list-style-type: none;
     padding:18px;
-    position:absolute;
+    
     bottom:32px;
     display:flex;
     flex-direction: column;
@@ -111,13 +111,14 @@ input:focus{
         <div class="col-sm-3 col-sm-offset-4 frame">
             <ul></ul>
             <div>
-                <div class="msj-rta macro" style="margin:auto">
+                
+            </div>
+        </div>
+        <div class="msj-rta macro" style="margin:auto">
                     <div class="text text-r" style="background:whitesmoke !important">
                         <input class="mytext" placeholder="Type a message"/>
                     </div>
                 </div>
-            </div>
-        </div>
     </body>
 
 <script>
@@ -168,6 +169,7 @@ function insertChat(who, text, time = 0){
     setTimeout(
         function(){
             $("ul").append(control);
+            $('.frame').animate({scrollTop: $('.frame')[0].scrollHeight}, 500);
 
         }, time);
 
@@ -182,15 +184,17 @@ $(".mytext").on("keyup", function(e){
         var text = $(this).val();
         if (text !== ""){
             insertChat("me", text);
-
+            $('.frame').animate({scrollTop: $('.frame')[0].scrollHeight}, 500);
             $.post('perguntar', { "pergunta": text},
                 function(returnedData){
                      insertChat("you",  returnedData, 1000);
+                     
             }).fail(function(){
                   console.log("error");
             });
 
             $(this).val('');
+            
         }
     }
 });

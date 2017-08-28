@@ -1,7 +1,15 @@
+import urllib.parse
 from robobrowser import RoboBrowser
 from pagina2 import Pagina
 from sqlalchemy.orm import sessionmaker
 import sys
+
+def sinonimos(palavra):
+    palavra = urllib.parse.quote(palavra)
+    browser = RoboBrowser()
+    browser.open('https://www.sinonimos.com.br/'+ palavra)
+    return [t.text for t in browser.select('.sinonimo')]
+
 
 def url_navegavel(url):
     global url_pagina_inicial
@@ -19,7 +27,9 @@ def valida_url(url):
     if(url.startswith('http') ):
         if(not url.startswith(url_pagina_inicial)):
             return False
-    
+    if(url.endswith(".jpg") or url.endswith(".png") or url.endswith(".jpeg") or url.endswith(".bmp") or url.endswith(".pdf") or url.endswith(".gif")):
+        return False
+
     if(url in vetor_links ):
         return False
     
@@ -81,7 +91,7 @@ vetor_links = []
 vetor_paginas.insert(0, [])
 
 # Browse to Rap Genius
-url_pagina_inicial = 'http://www.avansys.com.br'
+url_pagina_inicial = 'http://www.opensystem.srv.br'
 vetor_links.append(url_pagina_inicial)
 nivel = 0
 posicao_largura = 0

@@ -2,6 +2,7 @@ import urllib.parse
 from robobrowser import RoboBrowser
 from pagina2 import Pagina
 from resultado import Resultado
+from config import *
 import sys
 
 #função p/ buscar sinônimos (não utilizado)
@@ -58,6 +59,7 @@ def captura (pagina):
     global vetor_paginas
     global nivel
     global vetor_links
+    global MAX_PAGINAS
 
     browser = RoboBrowser()
     try:
@@ -82,8 +84,13 @@ def captura (pagina):
                 p = Pagina(link['href'])
                 p.pai = pagina
                 pagina.filhos.append(p)
-                vetor_paginas[nivel + 1].append(p)
-                vetor_links.append(link['href'])
+                niveis = len(vetor_paginas) - 1
+                total_paginas = 0
+                for n in range(0,niveis):
+                    total_paginas += len(vetor_paginas[n])
+                if total_paginas < MAX_PAGINAS:
+                    vetor_paginas[nivel + 1].append(p)
+                    vetor_links.append(link['href'])
     except:
         print("erro")
         e = sys.exc_info()[0]
@@ -96,7 +103,9 @@ vetor_links = [] #vetor para validar lins já encontrados
 
 #inicializa vetor de páginas com a página inicial
 vetor_paginas.insert(0, [])
-url_pagina_inicial = 'http://www.opensystem.srv.br'
+global PAGINA_INICIAL
+url_pagina_inicial = PAGINA_INICIAL
+print(PAGINA_INICIAL)
 vetor_links.append(url_pagina_inicial)
 nivel = 0
 posicao_largura = 0
@@ -143,7 +152,7 @@ def ordernar_resultados(lista):
                 prob_acerto_e_condicao = float(len([r for r in resultados if r.h1 == l.h1 and r.h2 == l.h2 and r.h3 == l.h3 and r.h4 == l.h4  and r.h5 == l.h5 and r.h6 == l.h6
                                        and r.negrito == l.negrito and r.titulo == l.titulo and r.acerto==True]))/float(len(resultados))
                 l.probabilidade = float(prob_acerto_e_condicao) / float(prob_condicao)
-    lista.sort(key=lambda x: x.probabilidade) #ordena pela probabilidade
+    lista.sort(key=lambda x: x.probabilidade, reverse=True) #ordena pela probabilidade
 
 #dado um texto (busca) tenta encontrar no vetor_paginas uma página que tenha as tags em h1..titulo...
 def buscar(busca):

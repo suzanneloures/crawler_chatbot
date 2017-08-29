@@ -116,7 +116,7 @@ input:focus{
         </div>
         <div class="msj-rta macro" style="margin:auto">
                     <div class="text text-r" style="background:whitesmoke !important">
-                        <input class="mytext" placeholder="Type a message"/>
+                        <input class="mytext" placeholder="Digite a mensagem"/>
                     </div>
                 </div>
     </body>
@@ -190,11 +190,13 @@ $(".mytext").on("keyup", function(e){
             insertChat("me", text);
             if(estado_feedback){
                 if($(this).val().toUpperCase() == 'SIM'){
-                    $.post( "acerto",{"id":respostas[resposta_atual].id}, function( data ) {
+                    estado_feedback = false
+                    id_feedback = resposta_atual - 1;
+                    resposta_atual = 0;
+                    $.post( "acerto",{"id":respostas[id_feedback].id}, function( data ) {
                         console.log(respostas[resposta_atual].id);
-                      insertChat("you", "Legal! Posso ajudar em algo mais?");
-                      estado_feedback = false
-                        resposta_atual = 0;
+                        insertChat("you", "Legal! Posso ajudar em algo mais?");
+
                     });
 
 

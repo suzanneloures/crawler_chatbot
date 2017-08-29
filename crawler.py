@@ -122,11 +122,14 @@ while(len(vetor_paginas[nivel])>0):
 
 def ordernar_resultados(lista):
     global resultados
+    print(len(resultados))
     if len(resultados) > 0:
         prob_acerto = float(len([r for r in resultados if r.acerto==True])) / float(len(resultados))
+        print(prob_acerto)
     else:
         prob_acerto = 0
     for l in lista:
+        print(prob_acerto)
         if(prob_acerto==0):
             l.probabilidade = 0
         else:

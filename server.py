@@ -17,15 +17,21 @@ def perguntar():
     '''if len(retorno) == 0:
         return "<br/> Não encontrei nada relacionado a sua questão. Tente palavras chaves"
     return '<br/> Verifiquei que as seguintes páginas correspondem à sua pergunta: '+'<br/>'+retorno[0].url'''
-    return Response(json.dumps([ob.__dict__ for ob in retorno]),  mimetype='application/json')
+    ordernar_resultados(retorno)
+    return Response(json.dumps([ob.__dict__ for ob in resultados]),  mimetype='application/json')
 
 
 @app.route('/acerto', methods = ['POST'])
 def acerto():
     global resultados
-    id = int(request.form['id'])
-    resultado = resultados[id]
+    id = request.form['id']
+    resultado = resultados[int(id)]
     resultado.setacerto()
-    resultados[id] = resultado
-    return 1
+    resultados[int(id)] = resultado
+    return "ok"
+
+@app.route('/lista')
+def lista():
+    global resultados
+    return Response(json.dumps([ob.__dict__ for ob in resultados]), mimetype='application/json')
 

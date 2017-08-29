@@ -32,6 +32,16 @@ def acerto():
             break
     return "ok"
 
+@app.route('/remove', methods = ['POST'])
+def remover():
+    global resultados
+    id = request.form['id']
+    for r in resultados:
+        if r.id == int(id):
+            resultados.remove(r)
+            break
+    return "ok"
+
 #LISTA TODOS OS RESULTADOS
 @app.route('/lista')
 def lista():

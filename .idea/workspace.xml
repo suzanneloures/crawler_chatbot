@@ -26,23 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="crawler.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/crawler.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="106" column="35" selection-start-line="106" selection-start-column="35" selection-end-line="106" selection-end-column="35" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="1" column="14" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="14" />
+              <caret line="1" column="46" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -51,8 +39,8 @@
       <file leaf-file-name="server.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="918">
-              <caret line="54" column="15" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
+            <state relative-caret-position="318">
+              <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
               <folding>
                 <element signature="e#0#74#0" expanded="true" />
               </folding>
@@ -80,19 +68,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="webchat.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="webchat.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/webchat.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="117" column="43" selection-start-line="117" selection-start-column="43" selection-end-line="117" selection-end-column="43" />
+            <state relative-caret-position="193">
+              <caret line="197" column="47" selection-start-line="197" selection-start-column="47" selection-end-line="197" selection-end-column="47" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1504032401089" expanded="true" signature="4003:4013" placeholder="..." />
-                <marker date="1504032401089" expanded="true" signature="4147:4158" placeholder="..." />
-                <marker date="1504032401089" expanded="true" signature="4517:4528" placeholder="..." />
-                <marker date="1504032401089" expanded="true" signature="4858:4893" placeholder="..." />
-                <marker date="1504032401089" expanded="true" signature="4926:4937" placeholder="..." />
+                <marker date="1504039075054" expanded="true" signature="4003:4013" placeholder="..." />
+                <marker date="1504039075054" expanded="true" signature="4147:4158" placeholder="..." />
+                <marker date="1504039075054" expanded="true" signature="4517:4528" placeholder="..." />
+                <marker date="1504039075054" expanded="true" signature="4858:4893" placeholder="..." />
+                <marker date="1504039075054" expanded="true" signature="4926:4937" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -134,10 +122,10 @@
         <option value="$PROJECT_DIR$/template/chat.html" />
         <option value="$PROJECT_DIR$/static/chat.html" />
         <option value="$PROJECT_DIR$/resultado.py" />
-        <option value="$PROJECT_DIR$/server.py" />
-        <option value="$PROJECT_DIR$/config.py" />
-        <option value="$PROJECT_DIR$/static/webchat.html" />
         <option value="$PROJECT_DIR$/crawler.py" />
+        <option value="$PROJECT_DIR$/config.py" />
+        <option value="$PROJECT_DIR$/server.py" />
+        <option value="$PROJECT_DIR$/static/webchat.html" />
       </list>
     </option>
   </component>
@@ -595,9 +583,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22995462" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22995462" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -691,11 +679,11 @@
           <folding>
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1504032401089" expanded="true" signature="4003:4013" placeholder="..." />
-            <marker date="1504032401089" expanded="true" signature="4147:4158" placeholder="..." />
-            <marker date="1504032401089" expanded="true" signature="4517:4528" placeholder="..." />
-            <marker date="1504032401089" expanded="true" signature="4858:4893" placeholder="..." />
-            <marker date="1504032401089" expanded="true" signature="4926:4937" placeholder="..." />
+            <marker date="1504039075054" expanded="true" signature="4003:4013" placeholder="..." />
+            <marker date="1504039075054" expanded="true" signature="4147:4158" placeholder="..." />
+            <marker date="1504039075054" expanded="true" signature="4517:4528" placeholder="..." />
+            <marker date="1504039075054" expanded="true" signature="4858:4893" placeholder="..." />
+            <marker date="1504039075054" expanded="true" signature="4926:4937" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -743,11 +731,11 @@
           <folding>
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1504032401089" expanded="true" signature="4003:4013" placeholder="..." />
-            <marker date="1504032401089" expanded="true" signature="4147:4158" placeholder="..." />
-            <marker date="1504032401089" expanded="true" signature="4517:4528" placeholder="..." />
-            <marker date="1504032401089" expanded="true" signature="4858:4893" placeholder="..." />
-            <marker date="1504032401089" expanded="true" signature="4926:4937" placeholder="..." />
+            <marker date="1504039075054" expanded="true" signature="4003:4013" placeholder="..." />
+            <marker date="1504039075054" expanded="true" signature="4147:4158" placeholder="..." />
+            <marker date="1504039075054" expanded="true" signature="4517:4528" placeholder="..." />
+            <marker date="1504039075054" expanded="true" signature="4858:4893" placeholder="..." />
+            <marker date="1504039075054" expanded="true" signature="4926:4937" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -814,52 +802,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resultado.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="88" selection-start-line="2" selection-start-column="88" selection-end-line="2" selection-end-column="88" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/req.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="54" column="15" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#74#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/webchat.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="117" column="43" selection-start-line="117" selection-start-column="43" selection-end-line="117" selection-end-column="43" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1504032401089" expanded="true" signature="4003:4013" placeholder="..." />
-            <marker date="1504032401089" expanded="true" signature="4147:4158" placeholder="..." />
-            <marker date="1504032401089" expanded="true" signature="4517:4528" placeholder="..." />
-            <marker date="1504032401089" expanded="true" signature="4858:4893" placeholder="..." />
-            <marker date="1504032401089" expanded="true" signature="4926:4937" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="14" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -869,6 +815,48 @@
           <caret line="106" column="35" selection-start-line="106" selection-start-column="35" selection-end-line="106" selection-end-column="35" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="46" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resultado.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="88" selection-start-line="2" selection-start-column="88" selection-end-line="2" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/webchat.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="197" column="47" selection-start-line="197" selection-start-column="47" selection-end-line="197" selection-end-column="47" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1504039075054" expanded="true" signature="4003:4013" placeholder="..." />
+            <marker date="1504039075054" expanded="true" signature="4147:4158" placeholder="..." />
+            <marker date="1504039075054" expanded="true" signature="4517:4528" placeholder="..." />
+            <marker date="1504039075054" expanded="true" signature="4858:4893" placeholder="..." />
+            <marker date="1504039075054" expanded="true" signature="4926:4937" placeholder="..." />
           </folding>
         </state>
       </provider>

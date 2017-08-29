@@ -190,27 +190,25 @@ $(".mytext").on("keyup", function(e){
             insertChat("me", text);
             if(estado_feedback){
                 if($(this).val().toUpperCase() == 'SIM'){
-                    insertChat("you", "Legal! Posso ajudar em algo mais?");
-                    estado_feedback = false
-                }else{
+                    $.post( "acerto",{"id":respostas[resposta_atual].id}, function( data ) {
+                        console.log(respostas[resposta_atual].id);
+                      insertChat("you", "Legal! Posso ajudar em algo mais?");
+                      estado_feedback = false
+                        resposta_atual = 0;
+                    });
 
+
+                }else{
+                    mostraResposta();
                 }
             }else{
                 $.post('perguntar', { "pergunta": text},
                 function(returnedData){
-                    respostas = $.parseJSON(returnedData)
+                    respostas = returnedData
                     if(respostas.length == 0){
                         insertChat("you",  "Desculpe, não encontrei resultados", 1000);
                     }else{
-                        if(resposta_atual > respostas.length - 1){
-                            resposta_atual = 0;
-                            insertChat("you",  "Sem mais resultados", 1000);
-                        }else{
-                            insertChat("you", "Achei a seguinte página:");
-                            insertChat("you", respostas[resposta_atual].url);
-                            insertChat("you", "Ela ajuda?");
-                            estado_feedback = true;
-                        }
+                        mostraResposta();
 
                     }
                      //insertChat("you",  returnedData, 1000);
@@ -227,6 +225,21 @@ $(".mytext").on("keyup", function(e){
         }
     }
 });
+
+function mostraResposta() {
+    if(resposta_atual > respostas.length - 1){
+                            resposta_atual = 0;
+                            insertChat("you",  "Sem mais resultados", 1000);
+                            estado_feedback = false;
+                        }else{
+                            insertChat("you", "Achei a seguinte página:");
+                            insertChat("you", respostas[resposta_atual].url);
+                            insertChat("you", "Ela ajuda?");
+                            estado_feedback = true;
+                            resposta_atual++;
+                        }
+
+}
 
 //-- Clear Chat
 resetChat();

@@ -50,3 +50,8 @@ def segue():
     for r in resultados:
         if(r.id == id):
             return redirect(r.url)
+
+@app.route('/captura',methods=['GET'])
+def home():
+    inicia()
+    return "ok"

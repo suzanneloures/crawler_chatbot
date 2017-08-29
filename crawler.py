@@ -111,14 +111,17 @@ vetor_paginas[0].append(p_inicial)
 #        browser.open(url_pagina_inicial + link['href'])
 
 # funcao captura todos os titulos e links da pagina e salva no vetor
-
-while(len(vetor_paginas[nivel])>0):
-    if(len(vetor_paginas[nivel]) == posicao_largura ):
-        nivel += 1
-        posicao_largura = 0
-    else:
-        captura(vetor_paginas[nivel][posicao_largura])
-        posicao_largura += 1
+def inicia():
+    global vetor_paginas
+    global nivel
+    global posicao_largura
+    while(len(vetor_paginas[nivel])>0):
+        if(len(vetor_paginas[nivel]) == posicao_largura ):
+            nivel += 1
+            posicao_largura = 0
+        else:
+            captura(vetor_paginas[nivel][posicao_largura])
+            posicao_largura += 1
 
 def ordernar_resultados(lista):
     global resultados

@@ -7,3 +7,7 @@ class Resultado():
         self.url = url
         self.acerto = acerto
         self.probabilidade = 0
+        self.id = id
+
+    def setacerto(self):
+        self.acerto=True

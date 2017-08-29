@@ -136,11 +136,13 @@ def ordernar_resultados(lista):
         if(prob_acerto==0):
             l.probabilidade = 0
         else:
-            prob_condicao = float(len([r for r in resultados if r.h1 == l.h1 and r.h2 == l.h2 and r.titulo == l.titulo]))/float(len(resultados))
+            prob_condicao = float(len([r for r in resultados if r.h1 == l.h1 and r.h2 == l.h2 and r.h3 == l.h3 and r.h4 == l.h4  and r.h5 == l.h5 and r.h6 == l.h6
+                                       and r.negrito == l.negrito and r.titulo == l.titulo ]))/float(len(resultados))
             if prob_condicao == 0:
                 l.probabilidade = 0
             else:
-                prob_acerto_e_condicao = float(len([r for r in resultados if r.h1 == l.h1 and r.h2 == l.h2 and r.titulo == l.titulo and r.acerto==True]))/float(len(resultados))
+                prob_acerto_e_condicao = float(len([r for r in resultados if r.h1 == l.h1 and r.h2 == l.h2 and r.h3 == l.h3 and r.h4 == l.h4  and r.h5 == l.h5 and r.h6 == l.h6
+                                       and r.negrito == l.negrito and r.titulo == l.titulo and r.acerto==True]))/float(len(resultados))
                 l.probabilidade = float(prob_acerto_e_condicao) / float(prob_condicao)
     lista.sort(key=lambda x: x.probabilidade)
 
@@ -180,9 +182,19 @@ def buscar(busca):
                         resultado.h1 = True
                     if palavra.upper() in vetor_paginas[profundidade][largura].h2.upper():
                         resultado.h2 = True
+                    if palavra.upper() in vetor_paginas[profundidade][largura].h3.upper():
+                        resultado.h3 = True
+                    if palavra.upper() in vetor_paginas[profundidade][largura].h4.upper():
+                        resultado.h4 = True
+                    if palavra.upper() in vetor_paginas[profundidade][largura].h5.upper():
+                        resultado.h5 = True
+                    if palavra.upper() in vetor_paginas[profundidade][largura].h6.upper():
+                        resultado.h6 = True
+                    if palavra.upper() in vetor_paginas[profundidade][largura].negrito.upper():
+                        resultado.negrito = True
                     if palavra.upper() in vetor_paginas[profundidade][largura].titulo.upper():
                         resultado.titulo = True
-                    if(resultado.titulo or resultado.h1 or resultado.h2):
+                    if(resultado.titulo or resultado.h1 or resultado.h2 or resultado.h3 or resultado.h4 or resultado.h5 or resultado.h6 or resultado.negrito):
                         resultado.url = url_navegavel(vetor_paginas[profundidade][largura].url)
                         #resultados.append(resultado)
                         id_resultado += 1

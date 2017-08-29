@@ -19,7 +19,7 @@ def perguntar():
         return "<br/> Não encontrei nada relacionado a sua questão. Tente palavras chaves"
     return '<br/> Verifiquei que as seguintes páginas correspondem à sua pergunta: '+'<br/>'+retorno[0].url'''
     ordernar_resultados(retorno)
-    resposta = retorno[:3]
+    resposta = retorno[:5]
     resultados.extend(resposta)
     return Response(json.dumps([ob.__dict__ for ob in resposta]),  mimetype='application/json')
 

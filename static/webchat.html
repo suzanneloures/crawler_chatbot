@@ -206,7 +206,8 @@ $(".mytext").on("keyup", function(e){
                 function(returnedData){
                     respostas = returnedData
                     if(respostas.length == 0){
-                        insertChat("you",  "Desculpe, não encontrei resultados", 1000);
+                        insertChat("you",  "Desculpe, não encontrei resultados", 500);
+                        insertChat("you",  "Em que posso ajudar além disso?", 1000);
                     }else{
                         mostraResposta();
 
@@ -229,12 +230,13 @@ $(".mytext").on("keyup", function(e){
 function mostraResposta() {
     if(resposta_atual > respostas.length - 1){
                             resposta_atual = 0;
-                            insertChat("you",  "Sem mais resultados", 1000);
+                            insertChat("you",  "Sem mais resultados", 500);
+                            insertChat("you",  "Que tal perguntar outra coisa?", 1000);
                             estado_feedback = false;
                         }else{
                             insertChat("you", "Achei a seguinte página:");
-                            insertChat("you", respostas[resposta_atual].url);
-                            insertChat("you", "Ela ajuda?");
+                            insertChat("you", '<a href="'+ respostas[resposta_atual].url +'" target="_blank">' +respostas[resposta_atual].url + "</a>");
+                            insertChat("you", "Ela ajuda? (Sim / Não)");
                             estado_feedback = true;
                             resposta_atual++;
                         }

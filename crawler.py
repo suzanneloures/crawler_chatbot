@@ -1,63 +1,68 @@
 import urllib.parse
 from robobrowser import RoboBrowser
 from pagina2 import Pagina
-from sqlalchemy.orm import sessionmaker
 from resultado import Resultado
 import sys
 
+#função p/ buscar sinônimos (não utilizado)
 def sinonimos(palavra):
     palavra = urllib.parse.quote(palavra)
     browser = RoboBrowser()
     browser.open('https://www.sinonimos.com.br/'+ palavra)
     return [t.text for t in browser.select('.sinonimo')]
 
-
+#inclui (se necessário) o http://site.com... antes do link
 def url_navegavel(url):
     global url_pagina_inicial
-
     
     if(not url.startswith("http")):
         return url_pagina_inicial+ "/" + url
 
     return url
 
+#função para validar url(se é interna e já não foi capturada)
 def valida_url(url):
     global vetor_links
 
-    
+    #verfica se começa com http.. se começa verifica se o endereço inicial é do proprio site
     if(url.startswith('http') ):
         if(not url.startswith(url_pagina_inicial)):
             return False
+    #verifica se  não é arquivo
     if(url.endswith(".jpg") or url.endswith(".png") or url.endswith(".jpeg") or url.endswith(".bmp") or url.endswith(".pdf") or url.endswith(".gif")):
         return False
 
+    #verifica se já não está no vetor de links
     if(url in vetor_links ):
         return False
-    
+
+    #verifica se não começa com hashtag
     if(url.startswith("#")):
         return False
+
+    #verifica se não é uma ação javascrit
     if(url.startswith('javascript')):
         return False
-    
+
+    #verifica se não é link para email
     if(url.startswith('mailto:')):
         return False
-    
+
     if(url == '/'):
         return False
     
     return True
 
+#pega as informações de uma página (h1 titulo...) e cria nós filhos a partir dos links encontrados (filhos vão pro proximo nivel do vetor)
 def captura (pagina):
     global vetor_paginas
     global nivel
     global vetor_links
 
-    
     browser = RoboBrowser()
     try:
         browser.open(url_navegavel(pagina.url))
-        
-        
+
         pagina.titulo = "".join([t.text for t in browser.select('title')])
         pagina.h1 = " ".join([t.text for t in browser.select('h1')])
         pagina.h2 = " ".join([t.text for t in browser.select('h2')])
@@ -71,6 +76,7 @@ def captura (pagina):
         if(len(vetor_paginas) <= nivel+1):
             vetor_paginas.insert(nivel+1, [])
 
+        #cria filhos em vetor_pagina
         for link in links:
             if(link.has_attr('href') and valida_url(link['href'])):
                 p = Pagina(link['href'])
@@ -85,12 +91,11 @@ def captura (pagina):
 
 
 vetor_titulos = []
-vetor_paginas = []
-vetor_links = []
+vetor_paginas = [] #vetor para salvar as paginas no formato de árvore
+vetor_links = [] #vetor para validar lins já encontrados
 
+#inicializa vetor de páginas com a página inicial
 vetor_paginas.insert(0, [])
-
-# Browse to Rap Genius
 url_pagina_inicial = 'http://www.opensystem.srv.br'
 vetor_links.append(url_pagina_inicial)
 nivel = 0
@@ -100,22 +105,13 @@ id_resultado = 0
 p_inicial = Pagina(url_pagina_inicial)
 
 vetor_paginas[0].append(p_inicial)
-#browser = RoboBrowser() # history=true volta para pagina anterior
-#browser.open(url_pagina_inicial)
-#links = browser.select('a')
-#browser.find_all(['h1','h2','h3','h4','h5','h6'])
 
-#for link in links:
-#    if(not link['href'].startswith('http') and link['href'] not in vetor_links):
-#        vetor_links.append(link['href'])
-#        browser.open(url_pagina_inicial + link['href'])
-
-# funcao captura todos os titulos e links da pagina e salva no vetor
+#inicia a captura pela posição inicial do vetor (que vai gerando os filhos) e segue para próximos níveis
 def inicia():
     global vetor_paginas
     global nivel
     global posicao_largura
-    while(len(vetor_paginas[nivel])>0):
+    while(len(vetor_paginas[nivel])>0): #se o nível tem páginas.. se não tem é pq o nivel de cima n tem filhos
         if(len(vetor_paginas[nivel]) == posicao_largura ):
             nivel += 1
             posicao_largura = 0
@@ -123,15 +119,18 @@ def inicia():
             captura(vetor_paginas[nivel][posicao_largura])
             posicao_largura += 1
 
+#ordena o vetor de resultados ordenado pela probabilidade
 def ordernar_resultados(lista):
     global resultados
     print(len(resultados))
+
+    #se o total de resultados > 0
     if len(resultados) > 0:
-        prob_acerto = float(len([r for r in resultados if r.acerto==True])) / float(len(resultados))
+        prob_acerto = float(len([r for r in resultados if r.acerto==True])) / float(len(resultados)) #probabilidade de um acerto
         print(prob_acerto)
     else:
         prob_acerto = 0
-    for l in lista:
+    for l in lista: #para cada resultado na lista de resultados
         print(prob_acerto)
         if(prob_acerto==0):
             l.probabilidade = 0
@@ -144,8 +143,9 @@ def ordernar_resultados(lista):
                 prob_acerto_e_condicao = float(len([r for r in resultados if r.h1 == l.h1 and r.h2 == l.h2 and r.h3 == l.h3 and r.h4 == l.h4  and r.h5 == l.h5 and r.h6 == l.h6
                                        and r.negrito == l.negrito and r.titulo == l.titulo and r.acerto==True]))/float(len(resultados))
                 l.probabilidade = float(prob_acerto_e_condicao) / float(prob_condicao)
-    lista.sort(key=lambda x: x.probabilidade)
+    lista.sort(key=lambda x: x.probabilidade) #ordena pela probabilidade
 
+#dado um texto (busca) tenta encontrar no vetor_paginas uma página que tenha as tags em h1..titulo...
 def buscar(busca):
     resposta = []
     #busca = input("Em que posso ajudar?")
@@ -171,7 +171,7 @@ def buscar(busca):
     querybusca = busca.split()
     resultadobusca = [palavra for palavra in querybusca if palavra.lower() not in removepalavras]
 
-
+    #varre o vetor paginas para achar as paginas com "Match" e devolve um vetor de Resultado()
     for profundidade in range(0, len(vetor_paginas) - 1):
         if (len(vetor_paginas[profundidade]) > 0):
             for largura in range(0, len(vetor_paginas[profundidade]) - 1):
@@ -199,16 +199,10 @@ def buscar(busca):
                         #resultados.append(resultado)
                         id_resultado += 1
                         resposta.append(resultado)
-                    '''
-                    if palavra.upper() in vetor_paginas[profundidade][largura].h1.upper() + vetor_paginas[profundidade][
-                        largura].titulo.upper() \
-                            + vetor_paginas[profundidade][largura].h2.upper() + vetor_paginas[profundidade][
-                        largura].h3.upper() + \
-                            vetor_paginas[profundidade][largura].h4.upper():
-                        resposta.append(url_navegavel(vetor_paginas[profundidade][largura].url))
-                    '''
     return resposta
 
+
+#apenas caso rode pelo console
 if __name__ == "__main__":
     while(True):
         comando = input("Deseja fazer uma busca? S/N")

@@ -134,8 +134,11 @@ def ordernar_resultados(lista):
             l.probabilidade = 0
         else:
             prob_condicao = float(len([r for r in resultados if r.h1 == l.h1 and r.h2 == l.h2 and r.titulo == l.titulo]))/float(len(resultados))
-            prob_acerto_e_condicao = float(len([r for r in resultados if r.h1 == l.h1 and r.h2 == l.h2 and r.titulo == l.titulo and r.acerto==True]))/float(len(resultados))
-            l.probabilidade = float(prob_acerto_e_condicao) / float(prob_condicao)
+            if prob_condicao == 0:
+                l.probabilidade = 0
+            else:
+                prob_acerto_e_condicao = float(len([r for r in resultados if r.h1 == l.h1 and r.h2 == l.h2 and r.titulo == l.titulo and r.acerto==True]))/float(len(resultados))
+                l.probabilidade = float(prob_acerto_e_condicao) / float(prob_condicao)
     lista.sort(key=lambda x: x.probabilidade)
 
 def buscar(busca):
@@ -178,7 +181,7 @@ def buscar(busca):
                         resultado.titulo = True
                     if(resultado.titulo or resultado.h1 or resultado.h2):
                         resultado.url = url_navegavel(vetor_paginas[profundidade][largura].url)
-                        resultados.append(resultado)
+                        #resultados.append(resultado)
                         id_resultado += 1
                         resposta.append(resultado)
                     '''

@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ba71ae4a-f10d-4370-84d1-e25713e00f50" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resultado.py" afterPath="$PROJECT_DIR$/resultado.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crawler.py" afterPath="$PROJECT_DIR$/crawler.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.py" afterPath="$PROJECT_DIR$/server.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/webchat.html" afterPath="$PROJECT_DIR$/static/webchat.html" />
     </list>
     <ignored path="crawler_chatbot.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,20 +33,20 @@
       <file leaf-file-name="crawler.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/crawler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="197" column="23" lean-forward="false" selection-start-line="197" selection-start-column="23" selection-end-line="197" selection-end-column="23" />
+            <state relative-caret-position="-515">
+              <caret line="138" column="17" lean-forward="true" selection-start-line="138" selection-start-column="17" selection-end-line="138" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="server.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="25" lean-forward="false" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+            <state relative-caret-position="485">
+              <caret line="48" column="35" lean-forward="false" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
               <folding>
-                <element signature="e#0#64#0" expanded="true" />
+                <element signature="e#0#74#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -71,17 +72,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="webchat.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="webchat.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/webchat.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="128" column="0" lean-forward="false" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+            <state relative-caret-position="300">
+              <caret line="211" column="51" lean-forward="false" selection-start-line="211" selection-start-column="51" selection-end-line="211" selection-end-column="51" />
               <folding>
-                <marker date="1503968539674" expanded="true" signature="4000:4010" ph="..." />
-                <marker date="1503968539674" expanded="true" signature="4144:4155" ph="..." />
-                <marker date="1503968539674" expanded="true" signature="4514:4525" ph="..." />
-                <marker date="1503968539674" expanded="true" signature="4855:4890" ph="..." />
-                <marker date="1503968539674" expanded="true" signature="4923:4934" ph="..." />
+                <marker date="1503979647480" expanded="true" signature="4000:4010" ph="..." />
+                <marker date="1503979647480" expanded="true" signature="4144:4155" ph="..." />
+                <marker date="1503979647480" expanded="true" signature="4514:4525" ph="..." />
+                <marker date="1503979647480" expanded="true" signature="4855:4890" ph="..." />
+                <marker date="1503979647480" expanded="true" signature="4923:4934" ph="..." />
               </folding>
             </state>
           </provider>
@@ -121,10 +122,10 @@
       <list>
         <option value="$PROJECT_DIR$/template/chat.html" />
         <option value="$PROJECT_DIR$/static/chat.html" />
-        <option value="$PROJECT_DIR$/crawler.py" />
-        <option value="$PROJECT_DIR$/static/webchat.html" />
         <option value="$PROJECT_DIR$/resultado.py" />
+        <option value="$PROJECT_DIR$/crawler.py" />
         <option value="$PROJECT_DIR$/server.py" />
+        <option value="$PROJECT_DIR$/static/webchat.html" />
       </list>
     </option>
   </component>
@@ -516,7 +517,21 @@
       <option name="project" value="LOCAL" />
       <updated>1503891955783</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="arrumando p prob">
+      <created>1503971192313</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1503971192313</updated>
+    </task>
+    <task id="LOCAL-00005" summary="respondendo json">
+      <created>1503974954422</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1503974954422</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -541,7 +556,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32775453" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32775453" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32775453" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39888424" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -561,14 +576,17 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="buscando palavras separadas" />
     <MESSAGE value="busca na web" />
-    <option name="LAST_COMMIT_MESSAGE" value="busca na web" />
+    <MESSAGE value="arrumando p prob" />
+    <MESSAGE value="respondendo json" />
+    <MESSAGE value="rodando respondendo" />
+    <option name="LAST_COMMIT_MESSAGE" value="rodando respondendo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/crawler.py</url>
-          <line>198</line>
+          <line>204</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
@@ -590,7 +608,7 @@
         <state relative-caret-position="204">
           <caret line="15" column="28" lean-forward="true" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
           <folding>
-            <element signature="e#0#64#0" expanded="true" />
+            <element signature="e#0#74#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -608,11 +626,11 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1503968539674" expanded="true" signature="4000:4010" ph="..." />
-            <marker date="1503968539674" expanded="true" signature="4144:4155" ph="..." />
-            <marker date="1503968539674" expanded="true" signature="4514:4525" ph="..." />
-            <marker date="1503968539674" expanded="true" signature="4855:4890" ph="..." />
-            <marker date="1503968539674" expanded="true" signature="4923:4934" ph="..." />
+            <marker date="1503979647480" expanded="true" signature="4000:4010" ph="..." />
+            <marker date="1503979647480" expanded="true" signature="4144:4155" ph="..." />
+            <marker date="1503979647480" expanded="true" signature="4514:4525" ph="..." />
+            <marker date="1503979647480" expanded="true" signature="4855:4890" ph="..." />
+            <marker date="1503979647480" expanded="true" signature="4923:4934" ph="..." />
           </folding>
         </state>
       </provider>
@@ -693,28 +711,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/webchat.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="128" column="0" lean-forward="false" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
-          <folding>
-            <marker date="1503968539674" expanded="true" signature="4000:4010" ph="..." />
-            <marker date="1503968539674" expanded="true" signature="4144:4155" ph="..." />
-            <marker date="1503968539674" expanded="true" signature="4514:4525" ph="..." />
-            <marker date="1503968539674" expanded="true" signature="4855:4890" ph="..." />
-            <marker date="1503968539674" expanded="true" signature="4923:4934" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/crawler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="197" column="23" lean-forward="false" selection-start-line="197" selection-start-column="23" selection-end-line="197" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resultado.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -723,12 +719,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/crawler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-515">
+          <caret line="138" column="17" lean-forward="true" selection-start-line="138" selection-start-column="17" selection-end-line="138" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="25" lean-forward="false" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+        <state relative-caret-position="485">
+          <caret line="48" column="35" lean-forward="false" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
           <folding>
-            <element signature="e#0#64#0" expanded="true" />
+            <element signature="e#0#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/webchat.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="211" column="51" lean-forward="false" selection-start-line="211" selection-start-column="51" selection-end-line="211" selection-end-column="51" />
+          <folding>
+            <marker date="1503979647480" expanded="true" signature="4000:4010" ph="..." />
+            <marker date="1503979647480" expanded="true" signature="4144:4155" ph="..." />
+            <marker date="1503979647480" expanded="true" signature="4514:4525" ph="..." />
+            <marker date="1503979647480" expanded="true" signature="4855:4890" ph="..." />
+            <marker date="1503979647480" expanded="true" signature="4923:4934" ph="..." />
           </folding>
         </state>
       </provider>

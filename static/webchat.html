@@ -181,6 +181,7 @@ function resetChat(){
 }
 estado_feedback = false;
 respostas = [];
+resposta_atual = 0;
 
 $(".mytext").on("keyup", function(e){
     if (e.which == 13){
@@ -198,7 +199,21 @@ $(".mytext").on("keyup", function(e){
                 $.post('perguntar', { "pergunta": text},
                 function(returnedData){
                     respostas = $.parseJSON(returnedData)
-                     insertChat("you",  returnedData, 1000);
+                    if(respostas.length == 0){
+                        insertChat("you",  "Desculpe, não encontrei resultados", 1000);
+                    }else{
+                        if(resposta_atual > respostas.length - 1){
+                            resposta_atual = 0;
+                            insertChat("you",  "Sem mais resultados", 1000);
+                        }else{
+                            insertChat("you", "Achei a seguinte página:");
+                            insertChat("you", respostas[resposta_atual].url);
+                            insertChat("you", "Ela ajuda?");
+                            estado_feedback = true;
+                        }
+
+                    }
+                     //insertChat("you",  returnedData, 1000);
                      
                 }).fail(function(){
                     console.log("error");
